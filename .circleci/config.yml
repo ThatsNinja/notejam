@@ -33,10 +33,15 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: install packages
+          working_directory: ~/repo/rubyonrails/notejam
+          command: |
+            sudo apt-get install -y libgmp3-dev
+
+      - run:
           name: install dependencies
           working_directory: ~/repo/rubyonrails/notejam
           command: |
-            sudo apt-get install -y libgmp3-dev && \
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
